@@ -1,8 +1,8 @@
-== RIFAPP
+# RIFAPP
 
 Gestor de Rifas
 
-Integrantes:
+# Integrantes:
 
 * Fernando Lizana
 * Diego Fernández
