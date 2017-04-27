@@ -1,28 +1,44 @@
-== README
+== RIFAPP
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
+Gestor de Rifas
 
-Things you may want to cover:
+Integrantes:
 
-* Ruby version
+* Fernando Lizana
+* Diego Fernández
 
-* System dependencies
+# Versiones
 
-* Configuration
+* Ruby v2.4.0p0
+* Rails v4.2.0
+* Bundler v1.8.0
+* PostgreSQL (psql) v9.4.4
 
-* Database creation
+# Configuraciones
 
-* Database initialization
+## Setup
 
-* How to run the test suite
+Por favor asegurarse de tener instaladas todas las versiones de **Ruby**, **Rails**, **Bundler** y **PostgreSQL**.
 
-* Services (job queues, cache servers, search engines, etc.)
+`git clone https://github.com/https://github.com/IIC2513-2017-1/grupo-16`
+`cd grupo-16`
+`bundle install`
 
-* Deployment instructions
+## Crear Base de Datos
 
-* ...
+* Instalar PostgreSQL (v9.4.4)
 
+* Base de datos de desarrollo
 
-Please feel free to use a different markup language if you do not plan to run
-<tt>rake doc:app</tt>.
+`createdb rifapp-web_development`
+`psql rifapp-web_development` (Para abrir _shell_ de PostgreSQL)
+
+## Tests
+
+Para correr tests ejecutar el siguiente comando
+
+`bin/rails tests`
+
+## Producción
+
+* URL de Producción: `https://rifapp-web.herokuapp.com/`
