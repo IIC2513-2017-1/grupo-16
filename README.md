@@ -18,7 +18,7 @@ Gestor de Rifas
 
 ## Setup
 
-Por favor asegurarse de tener instaladas todas las versiones de *Ruby*, *Rails*, *Bundler* y *PostgreSQL*.
+Por favor asegurarse de tener instaladas las versiones de **Ruby**, **Rails**, **Bundler** y **PostgreSQL**.
 
 `git clone https://github.com/https://github.com/IIC2513-2017-1/grupo-16`
 
