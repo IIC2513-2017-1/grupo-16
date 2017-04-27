@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :sorteos
+
   resources :raffles
 
   resources :users
