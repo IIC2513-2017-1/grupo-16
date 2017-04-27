@@ -21,7 +21,9 @@ Integrantes:
 Por favor asegurarse de tener instaladas todas las versiones de *Ruby*, *Rails*, *Bundler* y *PostgreSQL*.
 
 `git clone https://github.com/https://github.com/IIC2513-2017-1/grupo-16`
+
 `cd grupo-16`
+
 `bundle install`
 
 ## Crear Base de Datos
@@ -31,6 +33,7 @@ Por favor asegurarse de tener instaladas todas las versiones de *Ruby*, *Rails*,
 * Base de datos de desarrollo
 
 `createdb rifapp-web_development`
+
 `psql rifapp-web_development` (Para abrir _shell_ de PostgreSQL)
 
 ## Tests
