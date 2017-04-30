@@ -5,4 +5,8 @@ class User < ActiveRecord::Base
 	has_many :raffles
 	has_many :sorteos
 	has_many :participates
+
+	def full_name
+    	"#{first_name} #{last_name}"
+  	end
 end

@@ -1,0 +1,23 @@
+<li class="raffle-stream-item">
+  <div class="author-info">
+    <span class="raffle-name">
+      <strong>
+      <%= "#{raffle.name}" %>
+      </strong>
+    </span>
+    <span class="raffle-author-name">Creada por: <%= "#{raffle.user.full_name}" %></span>
+    <span class="raffle-author-email">(<%="#{raffle.user.email}" %>)</span>
+  </div>
+  <span class="timestamp">
+    Creada hace <%= time_ago_in_words(raffle.created_at) %>
+  </span>
+  <div class="prize">
+    Premio: <%= raffle.prize %>
+  </div>
+  <div class="price">
+    Valor: <%= raffle.price %>
+  </div>
+  <div class="finish-date">
+    Termina en: <%= distance_of_time_in_words(Time.now, raffle.finish_date) %>
+  </div>
+</li>

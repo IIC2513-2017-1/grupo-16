@@ -1,0 +1,22 @@
+<%= form_for(@participate) do |f| %>
+<% if @participate.errors.any? %>
+<div id="error_explanation">
+  <h2><%= pluralize(@participate.errors.count, "error") %> prohibited this raffle from being saved:</h2>
+
+  <ul>
+    <% @participate.errors.full_messages.each do |message| %>
+    <li><%= message %></li>
+    <% end %>
+  </ul>
+</div>
+<% end %>
+
+<div class="field">
+  <%= f.label :user_id  %>
+  <%= f.select :user_id, User.all.collect { |user| [ user.email, user.id ] }, { include_blank: true }, { required: true } %>
+</div>
+<%= f.hidden_field :raffle_id, :value => raffle.id %>
+<div class="actions">
+  <%= f.submit 'Participar' %>
+</div>
+<% end %>
