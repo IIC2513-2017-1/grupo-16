@@ -7,8 +7,29 @@
   <%= csrf_meta_tags %>
 </head>
 <body>
+	<header>
+		<div id="logo">
+			<%= link_to root_path do %>
+				<%= image_tag('logo.png', size: '100x100', alt: 'Logo') %>
+			<% end %>
+		</div>
 
-<%= yield %>
+		<div id="user-bar">
+			<%= link_to 'Regístrate', new_user_path %>
+			<%= link_to 'Login', new_session_path %>
+		</div>
+	</header>
 
+	<main>
+		<%= yield %>
+	</main>
+
+	<footer>
+		<hr>
+		<div id="project">© Rifapp 2017</div>
+		<div id="license">
+			Tickets graphic by <a href="http://www.flaticon.com/authors/freepik">Freepik</a> from <a href="http://www.flaticon.com/">Flaticon</a> is licensed under <a href="http://creativecommons.org/licenses/by/3.0/" title="Creative Commons BY 3.0">CC BY 3.0</a>. Made with <a href="http://logomakr.com" title="Logo Maker">Logo Maker</a>
+		</div>
+	</footer>
 </body>
 </html>
