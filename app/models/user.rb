@@ -4,6 +4,5 @@ class User < ActiveRecord::Base
 
 	has_many :raffles
 	has_many :sorteos
-
-	has_many :participate_relationships, foreign_key: :raffle_id, class_name: 'Participate'
+	has_many :participates
 end
