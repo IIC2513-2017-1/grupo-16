@@ -14,6 +14,12 @@
 			<% end %>
 		</div>
 
+		<nav id="main-menu">
+			<%= link_to 'Usuarios', users_path %>
+			<%= link_to 'Rifas', raffles_path %>
+			<%= link_to 'Sorteos', sorteos_path %>
+		</nav>
+
 		<div id="user-bar">
 			<%= link_to 'Regístrate', new_user_path %>
 			<%= link_to 'Login', new_session_path %>
@@ -21,6 +27,11 @@
 	</header>
 
 	<main>
+		<% [:alert, :notice].each do |flash_type| %>
+			<% if (flash_message = flash[flash_type]).present? %>
+				<div class="<%= flash_type %>"><%= flash_message %></div>
+			<% end %>
+		<% end %>
 		<%= yield %>
 	</main>
 
