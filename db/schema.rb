@@ -19,16 +19,46 @@ ActiveRecord::Schema.define(version: 20170427121247) do
   create_table "raffles", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "name", null: false
+    t.string "prize", null: false
+    t.datetime "finish_date", null: false
+    t.string "price", null: false
+    t.integer "user_id", null: false
+    t.index ["user_id"], name: "index_raffles_on_user_id", using: :btree
   end
 
   create_table "sorteos", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.integer "raffle_id", null: false
+    t.integer "user_id", null: false
+    t.index ["raffle_id"], name: "index_sorteos_on_raffle_id", using: :btree
+    t.index ["user_id"], name: "index_sorteos_on_user_id", using: :btree
   end
 
   create_table "users", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
+    t.string "email", null: false
+    t.string "first_name"
+    t.string "last_name"
+    t.string "password", null: false
+    t.index ["email"], name: "index_users_on_email", unique: true, using: :btree
   end
+
+  create_table "participates", force: :cascade do |t|
+    t.datetime "created_at", null: false
+    t.datetime "updated_at", null: false
+    t.integer "raffle_id", null: false
+    t.integer "user_id", null: false
+    t.index ["raffle_id"], name: "index_sorteos_on_raffle_id", using: :btree
+    t.index ["user_id"], name: "index_sorteos_on_user_id", using: :btree
+  end
+
+  add_foreign_key "raffles", "users"
+  add_foreign_key "sorteos", "raffles"
+  add_foreign_key "sorteos", "users"
+  add_foreign_key "participates", "raffles"
+  add_foreign_key "participates", "users"
 
 end
