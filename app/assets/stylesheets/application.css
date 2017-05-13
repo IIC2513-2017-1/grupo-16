@@ -39,3 +39,14 @@
 .error {
   color: #ff0000;
 }
+
+.back-button {
+  background-color: #ffffff;
+  text-decoration: none;
+  text-align: center;
+}
+
+.back-button:hover {
+  background-color: #bababa;
+  color: #ffffff;
+}

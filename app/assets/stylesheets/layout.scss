@@ -69,6 +69,13 @@ nav#main-menu {
   }
 }
 
+main > .back-button {
+  display: block;
+  margin-left: 45%;
+  margin-right: 45%;
+  text-align: center;
+}
+
 div#user-bar {
   position: absolute;
   top: 40px;
