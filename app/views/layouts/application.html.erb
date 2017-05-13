@@ -15,15 +15,12 @@
 		</div>
 
 		<nav id="main-menu">
-			<!--<%= link_to 'Usuarios', users_path %>
-			<%= link_to 'Rifas', raffles_path %>
-			<%= link_to 'Sorteos', sorteos_path %>-->
 			<% if current_user %>
 				<%= link_to 'Creadas', created_user_path(current_user.id)%>
 				<%= link_to 'Participando', participating_user_path(current_user.id)%>
 				<%= link_to 'Guardadas', bookmarked_user_path(current_user.id)%>
-				<%= link_to 'Disponibles', available_user_path(current_user.id)%>
 			<% end %>
+			<%= link_to 'Disponibles', available_user_path(current_user.id)%>
 		</nav>
 		<div id="user-bar">
 			<% if current_user %>
