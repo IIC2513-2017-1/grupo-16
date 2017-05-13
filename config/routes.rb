@@ -4,7 +4,14 @@ Rails.application.routes.draw do
 
   resources :raffles
 
-  resources :users
+  resources :users do
+    member do
+      get 'created'
+      get 'available'
+      get 'participating'
+      get 'bookmarked'
+    end
+  end
 
   resource :session, only: [:new, :create, :destroy]
 

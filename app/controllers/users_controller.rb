@@ -1,5 +1,9 @@
 class UsersController < ApplicationController
-  before_action :set_user, only: [:show, :edit, :update, :destroy]
+  include Secured
+
+  before_action :logged_in?, only: %i[edit update destroy]
+  before_action :is_current_user?, only: %i[edit update destroy]
+  before_action :set_user, only: [:show, :edit, :update, :destroy,]
 
   # GET /users
   # GET /users.json
@@ -61,6 +65,19 @@ class UsersController < ApplicationController
     end
   end
 
+  def created
+  end
+
+  def available
+  end
+
+  def participating
+  end
+
+  def bookmarked
+  end
+
+
   private
     # Use callbacks to share common setup or constraints between actions.
     def set_user
@@ -71,5 +88,9 @@ class UsersController < ApplicationController
     def user_params
       params.require(:user).permit(:email, :first_name, :last_name, :password,
                                  :password_confirmation)
+    end
+    
+    def is_current_user?
+    redirect_to(root_path, notice: 'Unauthorized access!') unless @user == current_user
     end
 end
