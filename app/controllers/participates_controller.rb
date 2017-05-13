@@ -1,17 +1,6 @@
 class ParticipatesController < ApplicationController
   #TODO: fix participate button
 
-  # GET /participates/1
-  # GET /participates/1.json
-  def show
-  end
-
-  # GET /participates/new
-  def new
-    @participate = Participate.new
-    @raffle = Raffle.find(params[:raffle])
-  end
-
   # POST /participates
   # POST /participates.json
   def create
@@ -19,8 +8,8 @@ class ParticipatesController < ApplicationController
 
     respond_to do |format|
       if @participate.save
-        format.html { redirect_to @participate, notice: 'participate was successfully created.' }
-        format.json { render :show, status: :created, location: @participate }
+        format.html { redirect_to participating_user_path(params[:user_id]), notice: 'Ya estás participando en esta rifa (pago pendiente)!' }
+        format.json { render participating_user_path(params[:user_id]), status: :created, location: @participate }
       else
         format.html { render :new }
         format.json { render json: @participate.errors, status: :unprocessable_entity }
@@ -32,6 +21,6 @@ class ParticipatesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def participate_params
-      params.require(:participate).permit(:user_id, :raffle_id, :raffle)
+      params.permit(:user_id, :raffle_id)
     end
 end

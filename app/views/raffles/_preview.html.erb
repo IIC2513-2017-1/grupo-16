@@ -21,6 +21,6 @@
     Termina en: <%= distance_of_time_in_words(Time.now, raffle.finish_date) %>
   </div>
   <% if current_user and not Participate.where("raffle_id = ? AND user_id= ?", raffle.id, @user.id).exists? %>
-    <%= link_to 'Participar', new_participates_path(:raffle => raffle.id) %>
+    <%= link_to 'Participar', participates_path(:raffle_id => raffle.id, :user_id => @user.id), :method => :post %>
   <% end %>
 </li>
