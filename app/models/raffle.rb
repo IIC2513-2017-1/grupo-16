@@ -5,4 +5,5 @@ class Raffle < ActiveRecord::Base
 	validates :finish_date, presence: true, allow_blank: false
 
 	belongs_to :user
+	has_many :participates
 end
