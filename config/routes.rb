@@ -1,5 +1,7 @@
 Rails.application.routes.draw do
 
+  resources :participates
+
   resources :sorteos
 
   resources :raffles

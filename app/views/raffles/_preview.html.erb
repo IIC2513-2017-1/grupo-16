@@ -20,4 +20,5 @@
   <div class="finish-date">
     Termina en: <%= distance_of_time_in_words(Time.now, raffle.finish_date) %>
   </div>
+  <%= link_to 'Participar', new_participate_path(:raffle => raffle.id) %>
 </li>
