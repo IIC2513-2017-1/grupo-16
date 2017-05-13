@@ -2,9 +2,10 @@
 <html>
 <head>
   <title>Rifapp</title>
+  <%= csrf_meta_tags %>
+
   <%= stylesheet_link_tag    'application', media: 'all', 'data-turbolinks-track' => true %>
   <%= javascript_include_tag 'application', 'data-turbolinks-track' => true %>
-  <%= csrf_meta_tags %>
 </head>
 <body>
 	<header>
@@ -19,9 +20,12 @@
 				<%= link_to 'Creadas', created_user_path(current_user.id)%>
 				<%= link_to 'Participando', participating_user_path(current_user.id)%>
 				<%= link_to 'Guardadas', bookmarked_user_path(current_user.id)%>
+				<%= link_to 'Disponibles', available_user_path(current_user.id)%>
+			<% else %>
+				<%= link_to 'Rifas', raffles_path %>
 			<% end %>
-			<%= link_to 'Disponibles', available_user_path(current_user.id)%>
 		</nav>
+
 		<div id="user-bar">
 			<% if current_user %>
 				<div class="name">Hola, <%= link_to current_user.first_name, current_user %>!</div>
