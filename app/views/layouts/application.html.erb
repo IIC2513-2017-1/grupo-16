@@ -19,11 +19,15 @@
 			<%= link_to 'Rifas', raffles_path %>
 			<%= link_to 'Sorteos', sorteos_path %>
 		</nav>
-
 		<div id="user-bar">
-			<%= link_to 'Regístrate', new_user_path %>
-			<%= link_to 'Login', new_session_path %>
-		</div>
+			<% if current_user %>
+				<div class="name">Hola, <%= link_to current_user.first_name, current_user %>!</div>
+				<%= link_to 'Logout', session_path, method: :delete %>
+			<% else %>
+				<%= link_to 'Login', new_session_path %>
+				<%= link_to 'Regístrate', new_user_path %>
+			<% end %>
+      	</div>
 	</header>
 
 	<main>

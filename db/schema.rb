@@ -1,4 +1,3 @@
-# encoding: UTF-8
 # This file is auto-generated from the current state of the database. Instead
 # of editing this file, please use the migrations feature of Active Record to
 # incrementally modify your database, and then regenerate this schema definition.
@@ -11,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170430153701) do
+ActiveRecord::Schema.define(version: 20170513030659) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -21,10 +20,9 @@ ActiveRecord::Schema.define(version: 20170430153701) do
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.integer  "raffle_id"
+    t.index ["raffle_id"], name: "index_participates_on_raffle_id", using: :btree
+    t.index ["user_id"], name: "index_participates_on_user_id", using: :btree
   end
-
-  add_index "participates", ["raffle_id"], name: "index_participates_on_raffle_id", using: :btree
-  add_index "participates", ["user_id"], name: "index_participates_on_user_id", using: :btree
 
   create_table "raffles", force: :cascade do |t|
     t.datetime "created_at",  null: false
@@ -34,30 +32,27 @@ ActiveRecord::Schema.define(version: 20170430153701) do
     t.integer  "price"
     t.datetime "finish_date"
     t.integer  "user_id"
+    t.index ["user_id"], name: "index_raffles_on_user_id", using: :btree
   end
-
-  add_index "raffles", ["user_id"], name: "index_raffles_on_user_id", using: :btree
 
   create_table "sorteos", force: :cascade do |t|
     t.datetime "created_at", null: false
     t.datetime "updated_at", null: false
     t.integer  "user_id"
     t.integer  "raffle_id"
+    t.index ["raffle_id"], name: "index_sorteos_on_raffle_id", using: :btree
+    t.index ["user_id"], name: "index_sorteos_on_user_id", using: :btree
   end
 
-  add_index "sorteos", ["raffle_id"], name: "index_sorteos_on_raffle_id", using: :btree
-  add_index "sorteos", ["user_id"], name: "index_sorteos_on_user_id", using: :btree
-
   create_table "users", force: :cascade do |t|
-    t.datetime "created_at", null: false
-    t.datetime "updated_at", null: false
+    t.datetime "created_at",      null: false
+    t.datetime "updated_at",      null: false
     t.string   "email"
     t.string   "first_name"
     t.string   "last_name"
-    t.string   "password"
+    t.string   "password_digest"
+    t.index ["email"], name: "index_users_on_email", using: :btree
   end
-
-  add_index "users", ["email"], name: "index_users_on_email", using: :btree
 
   add_foreign_key "participates", "raffles"
   add_foreign_key "participates", "users"
