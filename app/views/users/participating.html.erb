@@ -1,0 +1,5 @@
+<ol>
+  <% @user.participates.each do |p| %>
+    <%= render 'raffles/preview', raffle: Raffle.find(p.raffle_id) %>
+  <% end %>
+</ol>

@@ -1,0 +1,5 @@
+<ol>
+  <% @user.raffles.each do |r| %>
+    <%= render 'raffles/preview', raffle: r %>
+  <% end %>
+</ol>

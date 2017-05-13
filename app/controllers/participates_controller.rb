@@ -1,5 +1,6 @@
 class ParticipatesController < ApplicationController
- 
+  #TODO: fix participate button
+
   # GET /participates/1
   # GET /participates/1.json
   def show
