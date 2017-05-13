@@ -5,3 +5,14 @@
 .new-user-form {
   text-align: center;
 }
+
+.current-user-first-name, .current-user-last-name, .current-user-email {
+  text-align: center;
+  font-size: 18px;
+  padding: 5px;
+  font-family: Helvetica, Arial, sans-serif;
+}
+
+.user-info {
+  padding: 10px;
+}
