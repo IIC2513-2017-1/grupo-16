@@ -1,5 +1,6 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
+  before_action :set_raffle, only: [:new, :create]
 
   # GET /comments
   # GET /comments.json
@@ -25,11 +26,12 @@ class CommentsController < ApplicationController
   # POST /comments.json
   def create
     @comment = Comment.new(comment_params)
+    @comment.update(user_id: current_user.id, raffle_id: @raffle.id)
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to @comment, notice: 'Comment was successfully created.' }
-        format.json { render :show, status: :created, location: @comment }
+        format.html { redirect_to [@raffle, @comment], notice: 'Comment was successfully created.' }
+        format.json { render created_user, status: :created, location: [@raffle, @comment] }
       else
         format.html { render :new }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
@@ -65,6 +67,10 @@ class CommentsController < ApplicationController
     # Use callbacks to share common setup or constraints between actions.
     def set_comment
       @comment = Comment.find(params[:id])
+    end
+
+    def set_raffle
+      @raffle = Raffle.find(params[:raffle_id])
     end
 
     # Never trust parameters from the scary internet, only allow the white list through.
