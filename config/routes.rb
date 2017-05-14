@@ -1,6 +1,8 @@
 Rails.application.routes.draw do
 
-  resources :raffles
+  resources :raffles do
+    resources :comments
+  end
 
   resources :users do
     member do
@@ -50,8 +52,7 @@ Rails.application.routes.draw do
 
   # Example resource route with more complex sub-resources:
   #   resources :products do
-  #     resources :comments
-  #     resources :sales do
+  #     #     resources :sales do
   #       get 'recent', on: :collection
   #     end
   #   end

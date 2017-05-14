@@ -8,6 +8,7 @@ class User < ActiveRecord::Base
 	has_many :sorteos
 	has_many :participates
 	has_many :bookmarks
+	has_many :comments
 
 	def full_name
     	"#{first_name} #{last_name}"

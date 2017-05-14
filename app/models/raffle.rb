@@ -7,4 +7,5 @@ class Raffle < ActiveRecord::Base
 	belongs_to :user
 	has_many :participates
 	has_many :bookmarks
+	has_many :comments
 end
