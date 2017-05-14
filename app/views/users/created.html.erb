@@ -1,6 +1,11 @@
+<% if @user.raffles.length == 0 %>
+	<div class="warning">No tienes rifas creadas. Por favor crea una nueva rifa apretando el bot&oacute;n "Nueva Rifa"</div>
+<% end %>
 <ol>
   <% @user.raffles.each do |r| %>
     <%= render 'raffles/preview', raffle: r %>
   <% end %>
 </ol>
-<%= link_to 'Nueva Rifa', new_raffle_path %>
+<div class="btn">
+<%= link_to 'Nueva Rifa', new_raffle_path, :class => "rifapp-btn" %>
+</div>

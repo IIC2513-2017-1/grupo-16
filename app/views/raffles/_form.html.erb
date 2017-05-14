@@ -11,32 +11,29 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :name %>
-    <%= f.text_field :name %>
-  </div>
+  <div class="new-raffle-form">
+    <div class="field">
+      <%= f.label :name %>
+      <%= f.text_field :name %>
+    </div>
 
-  <div class="field">
-    <%= f.label :prize %>
-    <%= f.text_field :prize %>
-  </div>
+    <div class="field">
+      <%= f.label :prize %>
+      <%= f.text_field :prize %>
+    </div>
 
-  <div class="field">
-    <%= f.label :price %>
-    <%= f.number_field :price %>
-  </div>
+    <div class="field">
+      <%= f.label :price %>
+      <%= f.number_field :price %>
+    </div>
 
-  <div class="field">
-    <%= f.label :finish_date %>
-    <%= f.datetime_select :finish_date %>
-  </div>
+    <div class="field">
+      <%= f.label :finish_date %>
+      <%= f.datetime_select :finish_date %>
+    </div>
 
-  <div class="field">
-    <%= f.label :user_id %>
-    <%= f.select :user_id, User.all.collect { |user| [ user.email, user.id ] }, { include_blank: true }, { required: true } %>
-  </div>
-
-  <div class="actions">
-    <%= f.submit %>
+    <div class="actions">
+      <%= f.submit %>
+    </div>
   </div>
 <% end %>
