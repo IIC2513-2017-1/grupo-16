@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
 	has_many :raffles
 	has_many :sorteos
 	has_many :participates
+	has_many :bookmarks
 
 	def full_name
     	"#{first_name} #{last_name}"

@@ -1,5 +1,4 @@
 class ParticipatesController < ApplicationController
-  #TODO: fix participate button
 
   # POST /participates
   # POST /participates.json
