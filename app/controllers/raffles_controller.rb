@@ -1,5 +1,8 @@
 class RafflesController < ApplicationController
+  include Secured
+
   before_action :set_raffle, only: [:show, :edit, :update, :destroy]
+  before_action :logged_in?, only: %i[new edit create update destroy]
 
   # GET /raffles
   # GET /raffles.json

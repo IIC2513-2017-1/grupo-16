@@ -2,7 +2,7 @@ Rails.application.routes.draw do
 
   resources :raffles
 
-  resources :users do
+  resources :users, except: %i[index] do
     member do
       get 'created'
       get 'available'

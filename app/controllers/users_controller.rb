@@ -2,8 +2,8 @@ class UsersController < ApplicationController
   include Secured
 
   before_action :set_user, only: %i[show edit update destroy created participating bookmarked available]
-  before_action :logged_in?, only: %i[edit update destroy]
-  before_action :is_current_user?, only: %i[edit update destroy created participating bookmarked available]
+  before_action :logged_in?, only: %i[show edit update destroy]
+  before_action :is_current_user?, only: %i[show edit update destroy created participating bookmarked available]
 
   # GET /users
   # GET /users.json
