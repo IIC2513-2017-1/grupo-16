@@ -4,6 +4,7 @@
     <%= "#{raffle.name}" %>
     </strong>
   </span>
+<<<<<<< HEAD
   <span class="raffle-author-name">Creada por: <%= "#{raffle.user.full_name}" %></span>
   <span class="raffle-author-email">(<%="#{raffle.user.email}" %>)</span>
 </div>
@@ -34,3 +35,25 @@
 <% if not current_controller?("comments") %>
   <%= link_to 'Comentarios', raffle_comments_path(raffle.id) %>
 <% end %>
+=======
+  <div class="prize">
+    Premio: <%= raffle.prize %>
+  </div>
+  <div class="price">
+    Valor: <%= raffle.price %>
+  </div>
+  <div class="finish-date">
+    Termina en: <%= distance_of_time_in_words(Time.now, raffle.finish_date) %>
+  </div>
+  <% if current_user and not Participate.where("raffle_id = ? AND user_id= ?", raffle.id, current_user.id).exists? and not raffle.user_id == current_user.id %>
+    <%= link_to 'Participar', participates_path(:raffle_id => raffle.id, :user_id => current_user.id), :method => :post %>
+  <% end %>
+  <% if current_user and not raffle.user_id  == current_user.id and not Participate.where("raffle_id = ? AND user_id= ?", raffle.id, current_user.id).exists? %>
+    <% if not Bookmark.where("raffle_id = ? AND user_id= ?", raffle.id, current_user.id).exists? %>
+      <%= link_to 'Guardar', bookmarks_path(:raffle_id => raffle.id, :user_id => current_user.id), :method => :post %>
+    <% else %>
+      <%= link_to 'Remover de Guardadas', bookmarks_path(:raffle_id => raffle.id, :user_id => current_user.id), :method => :delete %>
+    <% end %>
+  <% end %>
+</li>
+>>>>>>> seeds
