@@ -20,14 +20,14 @@
   <div class="finish-date">
     Termina en: <%= distance_of_time_in_words(Time.now, raffle.finish_date) %>
   </div>
-  <% if current_user and not Participate.where("raffle_id = ? AND user_id= ?", raffle.id, @user.id).exists? %>
-    <%= link_to 'Participar', participates_path(:raffle_id => raffle.id, :user_id => @user.id), :method => :post %>
+  <% if current_user and not Participate.where("raffle_id = ? AND user_id= ?", raffle.id, current_user.id).exists? and not raffle.user_id == current_user.id %>
+    <%= link_to 'Participar', participates_path(:raffle_id => raffle.id, :user_id => current_user.id), :method => :post %>
   <% end %>
-  <% if current_user and not raffle.user_id  == @user.id and not Participate.where("raffle_id = ? AND user_id= ?", raffle.id, @user.id).exists? %>
-    <% if not Bookmark.where("raffle_id = ? AND user_id= ?", raffle.id, @user.id).exists? %>
-      <%= link_to 'Guardar', bookmarks_path(:raffle_id => raffle.id, :user_id => @user.id), :method => :post %>
+  <% if current_user and not raffle.user_id  == current_user.id and not Participate.where("raffle_id = ? AND user_id= ?", raffle.id, current_user.id).exists? %>
+    <% if not Bookmark.where("raffle_id = ? AND user_id= ?", raffle.id, current_user.id).exists? %>
+      <%= link_to 'Guardar', bookmarks_path(:raffle_id => raffle.id, :user_id => current_user.id), :method => :post %>
     <% else %>
-      <%= link_to 'Remover de Guardadas', bookmarks_path(:raffle_id => raffle.id, :user_id => @user.id), :method => :delete %>
+      <%= link_to 'Remover de Guardadas', bookmarks_path(:raffle_id => raffle.id, :user_id => current_user.id), :method => :delete %>
     <% end %>
   <% end %>
 </li>
