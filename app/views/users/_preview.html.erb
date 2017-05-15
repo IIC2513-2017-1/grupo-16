@@ -1,0 +1,13 @@
+<div>
+  <span>
+    <strong>
+    <%= "#{user.full_name} " %>
+    </strong>
+  </span>
+  <span>
+    <%= link_to user.email, user_path(user) %>
+  </span>
+</div>
+<span>
+  Joined <%= time_ago_in_words(user.created_at) %> ago
+</span>

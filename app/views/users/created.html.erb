@@ -3,7 +3,7 @@
 <% end %>
 <ol>
   <% @user.raffles.each do |r| %>
-    <%= render 'raffles/preview', raffle: r %>
+    <li class="raffle-stream-item"><%= render 'raffles/preview', raffle: r %></li>
   <% end %>
 </ol>
 <div class="btn">
