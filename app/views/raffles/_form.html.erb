@@ -13,27 +13,27 @@
 
   <div class="new-raffle-form">
     <div class="field">
-      <%= f.label :name %>
+      <%= f.label :name, "Nombre:" %>
       <%= f.text_field :name %>
     </div>
 
     <div class="field">
-      <%= f.label :prize %>
+      <%= f.label :prize, "Premio:" %>
       <%= f.text_field :prize %>
     </div>
 
     <div class="field">
-      <%= f.label :price %>
+      <%= f.label :price, "Precio:" %>
       <%= f.number_field :price %>
     </div>
 
     <div class="field">
-      <%= f.label :finish_date %>
+      <%= f.label :finish_date, "Fecha de término:" %>
       <%= f.datetime_select :finish_date %>
     </div>
 
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit "Crear" %>
     </div>
   </div>
 <% end %>

@@ -28,7 +28,7 @@ class RafflesController < ApplicationController
   # POST /raffles.json
   def create
     @raffle = Raffle.new(raffle_params)
-
+    @raffle.update(user_id: current_user.id)
     respond_to do |format|
       if @raffle.save
         format.html { redirect_to @raffle, notice: 'Raffle was successfully created.' }
@@ -72,6 +72,6 @@ class RafflesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def raffle_params
-      params.require(:raffle).permit(:name, :prize, :price, :finish_date, :user_id)
+      params.require(:raffle).permit(:name, :prize, :price, :finish_date)
     end
 end
