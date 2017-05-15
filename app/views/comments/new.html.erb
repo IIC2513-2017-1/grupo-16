@@ -1,5 +1,5 @@
-<h1>Nuevo Comentario</h1>
+<h1 class="title">Nuevo Comentario</h1>
 
 <%= render 'form', comment: @comment, raffle: @raffle  %>
 
-<%= link_to 'Atrás', raffle_comments_path %>
+<%= link_to 'Atrás', raffle_comments_path, :class => "back-button" %>

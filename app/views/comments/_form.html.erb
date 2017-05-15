@@ -11,12 +11,14 @@
     </div>
   <% end %>
 
-  <div class="field">
-    <%= f.label :content, "Contenido" %>
-    <%= f.text_area :content %>
-  </div>
+  <div class="comment-form">
+    <div class="field">
+      <%= f.label :content, "Contenido" %>
+      <%= f.text_area :content %>
+    </div>
 
-  <div class="actions">
-    <%= f.submit "Comentar" %>
+    <div class="actions">
+      <%= f.submit "Comentar" %>
+    </div>
   </div>
 <% end %>
