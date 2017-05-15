@@ -13,32 +13,32 @@
 
   <div class="new-user-form">
     <div class="field">
-      <%= f.label :first_name %>
+      <%= f.label :first_name, "Nombre:" %>
       <%= f.text_field :first_name %>
     </div>
 
     <div class="field">
-      <%= f.label :last_name %>
+      <%= f.label :last_name, "Apellido:" %>
       <%= f.text_field :last_name %>
     </div>
 
     <div class="field">
-      <%= f.label :email %>
+      <%= f.label :email, "Email:" %>
       <%= f.email_field :email, required: true %>
     </div>
 
     <div class="field">
-      <%= f.label :password %>
+      <%= f.label :password, "Contraseña:" %>
       <%= f.password_field :password, required: true %>
     </div>
 
     <div class="field">
-      <%= f.label :password_confirmation %>
+      <%= f.label :password_confirmation, "Confirmar Contraseña:" %>
       <%= f.password_field :password_confirmation, required: true %>
     </div>
 
     <div class="actions">
-      <%= f.submit %>
+      <%= f.submit "Guardar" %>
     </div>
   </div>
 <% end %>

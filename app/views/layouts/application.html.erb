@@ -29,9 +29,9 @@
 		<div id="user-bar">
 			<% if current_user %>
 				<%= link_to current_user.first_name, current_user %>
-				<%= link_to 'Logout', session_path, method: :delete %>
+				<%= link_to 'Salir', session_path, method: :delete %>
 			<% else %>
-				<%= link_to 'Login', new_session_path %>
+				<%= link_to 'Iniciar Sesión', new_session_path %>
 				<%= link_to 'Regístrate', new_user_path %>
 			<% end %>
       	</div>
