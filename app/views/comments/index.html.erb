@@ -1,12 +1,12 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Rifa</h1>
+<h1 class="title">Rifa</h1>
 
 <%= render 'raffles/preview', raffle: @raffle %>
 
-<h1>Comenatrios</h1>
+<h1 class="title">Comentarios</h1>
 
-<table>
+<table class="center">
   <thead>
     <tr>
       <th>Usuario</th>
@@ -27,4 +27,4 @@
 
 <br>
 
-<%= link_to 'Nuevo Comentario', new_raffle_comment_path(params[:raffle_id]) %>
+<%= link_to 'Nuevo Comentario', new_raffle_comment_path(params[:raffle_id]), :class => "rifapp-btn" %>
