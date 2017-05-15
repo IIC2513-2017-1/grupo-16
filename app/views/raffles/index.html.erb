@@ -26,7 +26,7 @@
   <h1>Rifas: <%= @raffles.size %></h1>
   <ol>
     <% @raffles.each do |raffle| %>
-      <%= render 'raffles/preview', raffle: raffle %>
+      <li class="raffle-stream-item"><%= render 'raffles/preview', raffle: raffle %></li>
     <% end %>
   </ol>
   <%= link_to 'Nueva Rifa', new_raffle_path %>

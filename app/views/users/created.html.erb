@@ -1,6 +1,6 @@
 <ol>
   <% @user.raffles.each do |r| %>
-    <%= render 'raffles/preview', raffle: r %>
+    <li class="raffle-stream-item"><%= render 'raffles/preview', raffle: r %></li>
   <% end %>
 </ol>
 <%= link_to 'Nueva Rifa', new_raffle_path %>

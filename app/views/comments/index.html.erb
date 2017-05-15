@@ -1,28 +1,30 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Comments</h1>
+<h1>Rifa</h1>
+
+<%= render 'raffles/preview', raffle: @raffle %>
+
+<h1>Comenatrios</h1>
 
 <table>
   <thead>
     <tr>
-      <th>User</th>
-      <th>Raffle</th>
-      <th>Content</th>
-      <th colspan="3"></th>
+      <th>Usuario</th>
+      <th>Comentario</th>
+      <th colspan="2"></th>
     </tr>
   </thead>
 
   <tbody>
     <% @comments.each do |comment| %>
       <tr>
-        <td><%= comment.user %></td>
-        <td><%= comment.raffle %></td>
+        <td><%= comment.user.first_name + " " + comment.user.last_name %></td>
         <td><%= comment.content %></td>
-        </tr>
+      </tr>
     <% end %>
   </tbody>
 </table>
 
 <br>
 
-<%= link_to 'New Comment', new_raffle_comment_path(params[:raffle_id]) %>
+<%= link_to 'Nuevo Comentario', new_raffle_comment_path(params[:raffle_id]) %>

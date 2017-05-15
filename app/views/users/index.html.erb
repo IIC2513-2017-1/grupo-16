@@ -27,7 +27,7 @@
   <h1>Usuarios: <%= @users.size %></h1>
   <ol>
     <% @users.each do |user| %>
-      <%= render 'preview', user: user %>
+      <li><%= render 'preview', user: user %></li>
     <% end %>
   </ol>
   <%= link_to 'Nuevo Usuario', new_user_path %>

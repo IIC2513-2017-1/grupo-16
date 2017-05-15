@@ -1,11 +1,11 @@
 class CommentsController < ApplicationController
   before_action :set_comment, only: [:show, :edit, :update, :destroy]
-  before_action :set_raffle, only: [:new, :create]
+  before_action :set_raffle, only: [:new, :create, :index]
 
   # GET /comments
   # GET /comments.json
   def index
-    @comments = Comment.all
+    @comments = Comment.where("raffle_id = ?", @raffle.id)
   end
 
   # GET /comments/1
@@ -30,8 +30,8 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to [@raffle, @comment], notice: 'Comment was successfully created.' }
-        format.json { render created_user, status: :created, location: [@raffle, @comment] }
+        format.html { redirect_to raffle_comments_path(@raffle), notice: 'Comment was successfully created.' }
+        format.json { render created_user, status: :created, location: raffle_comments_path(@raffle) }
       else
         format.html { render :new }
         format.json { render json: @comment.errors, status: :unprocessable_entity }
