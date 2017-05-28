@@ -1,22 +1,52 @@
-<%= form_for(@participate) do |f| %>
-<% if @participate.errors.any? %>
-<div id="error_explanation">
-  <h2><%= pluralize(@participate.errors.count, "error") %> prohibited this raffle from being saved:</h2>
-
-  <ul>
-    <% @participate.errors.full_messages.each do |message| %>
-    <li><%= message %></li>
-    <% end %>
-  </ul>
+<div class="raffle-name">
+  <strong>
+    <%= "#{raffle.name}" %>
+  </strong>
 </div>
+<div class="author-info">
+  <span class="raffle-author-name">Creada por: <%= "#{raffle.user.full_name}" %></span>
+  <span class="raffle-author-email">(<%="#{raffle.user.email}" %>)</span>
+</div>
+<div class="timestamp">
+  Creada hace <%= time_ago_in_words(raffle.created_at) %>
+</div>
+<div class="prize">
+  Premio: <%= raffle.prize %>
+</div>
+<div class="price">
+  Valor: <%= raffle.price %>
+</div>
+<div class="remaining_numbers">
+  Números disponibles: <%= raffle.max_number - Participate.where("raffle_id = ?", raffle.id).count %>
+</div>
+<div class="finish-date">
+  Termina en: <%= distance_of_time_in_words(Time.now, raffle.finish_date) %>
+</div>
+<div class="numbers-bought">
+	<h5 class="numbers-bought-title">N&uacute;meros Comprados</h5>
+	<ul>
+		<% @user.participates.where("raffle_id = ?", raffle.id).order("number").each do |part| %>
+			<li><%= part.number %></li>
+		<% end%>
+	</ul>
+</div>
+<div class="rifapp-actions">
+<% if raffle.max_number - Participate.where("raffle_id = ?", raffle.id).count  > 0 %>
+  <%= link_to 'Comprar números', multi_new_participates_path(:raffle_id => raffle.id, :user_id => current_user.id), :class => "center" %>
 <% end %>
 
-<div class="field">
-  <%= f.label :user_id  %>
-  <%= f.select :user_id, User.all.collect { |user| [ user.email, user.id ] }, { include_blank: true }, { required: true } %>
-</div>
-<%= f.hidden_field :raffle_id, :value => raffle.id %>
-<div class="actions">
-  <%= f.submit 'Participar' %>
-</div>
+<% if current_user and not raffle.user_id  == current_user.id and not Participate.where("raffle_id = ? AND user_id= ?", raffle.id, current_user.id).exists? %>
+  <% if not Bookmark.where("raffle_id = ? AND user_id= ?", raffle.id, current_user.id).exists? %>
+    <%= link_to 'Guardar', bookmarks_path(:raffle_id => raffle.id, :user_id => current_user.id), :method => :post, :class => "center" %>
+  <% else %>
+    <%= link_to 'Remover de Guardadas', bookmarks_path(:raffle_id => raffle.id, :user_id => current_user.id), :method => :delete, :class => "center" %>
+  <% end %>
 <% end %>
+<% if not current_controller?("comments") %>
+  <%= link_to 'Comentarios', raffle_comments_path(raffle.id), :class => "center" %>
+<% end %>
+<% if current_user and raffle.user_id == current_user.id %>
+  <%= link_to 'Editar', edit_raffle_path(:raffle_id => raffle.id, :user_id => current_user.id), :class => "center" %>
+  <%= link_to 'Eliminar', raffle_path(:raffle_id => raffle.id, :user_id => current_user.id), method: :delete, :class => "center" %>
+<% end %>
+</div>

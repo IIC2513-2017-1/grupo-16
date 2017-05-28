@@ -1,3 +1,25 @@
 // Place all the styles related to the participate controller here.
 // They will automatically be included in application.css.
 // You can use Sass (SCSS) here: http://sass-lang.com/
+
+.numbers-bought, .numbers-bought > ul, .numbers-bought > ul > li, .numbers-bought-title {
+	text-align: center;
+}
+
+.numbers-bought {
+	padding-bottom: 20px;
+}
+
+.numbers-bought > ul {
+	margin: 0 auto;
+	list-style: none;
+	padding-left: 0px;
+}
+
+.numbers-bought > ul > li {
+	display: inline-block;
+}
+
+.numbers-bought-title {
+	margin-bottom: 5px;
+}
