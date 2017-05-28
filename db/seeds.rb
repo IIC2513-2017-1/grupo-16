@@ -18,10 +18,10 @@ end
 
 raffles = []
 raffle_data = [
-  {name: "Rifa Scout", prize: "TV", price: "1000", finish_date: DateTime.current(), user_id: User.first.id},
-  {name: "Rifa DCC", prize: "Notebook", price: "1000", finish_date: DateTime.current(), user_id: User.first.id},
-  {name: "Rifa Pastoral", prize: "Microondas", price: "1000", finish_date: DateTime.current(), user_id: User.last.id},
-  {name: "Rifa TDI", prize: "Radio", price: "1000", finish_date: DateTime.current(), user_id: User.last.id}
+  {name: "Rifa Scout", prize: "TV", price: "1000", finish_date: DateTime.current(), user_id: User.first.id, max_number: 100},
+  {name: "Rifa DCC", prize: "Notebook", price: "1000", finish_date: DateTime.current(), user_id: User.first.id, max_number: 200},
+  {name: "Rifa Pastoral", prize: "Microondas", price: "1000", finish_date: DateTime.current(), user_id: User.last.id, max_number: 50},
+  {name: "Rifa TDI", prize: "Radio", price: "1000", finish_date: DateTime.current(), user_id: User.last.id, max_number: 500}
 ]
 
 raffle_data.each do |r|
@@ -29,8 +29,10 @@ raffle_data.each do |r|
 end
 
 participate_data = [
-  {user_id: users.last.id, raffle_id: raffles.first.id},
-  {user_id: users.first.id, raffle_id: raffles.last.id}
+  {user_id: users.last.id, raffle_id: raffles.first.id, number: 5},
+  {user_id: users.last.id, raffle_id: raffles.first.id, number: 7},
+  {user_id: users.first.id, raffle_id: raffles.last.id, number: 3},
+  {user_id: users.first.id, raffle_id: raffles.last.id, number: 6}
 ]
 
 participate_data.each do |p|
