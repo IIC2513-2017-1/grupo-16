@@ -2,6 +2,12 @@ Rails.application.routes.draw do
 
   resources :raffles do
     resources :comments
+    resource :confirmations, only: [] do
+      collection do
+        get 'show'
+        post 'confirm'
+      end
+    end
   end
 
   resources :users, except: %i[index] do

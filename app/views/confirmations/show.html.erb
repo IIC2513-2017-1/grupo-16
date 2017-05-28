@@ -1,0 +1,36 @@
+<h1 class="title"><%= @raffle.name %></h1>
+<h2 class="subtitle">Participantes</h2>
+<div class="confirm-info">
+  <div class="confirmed-num">
+    Pagos confirmados: <%= Participate.where(:raffle_id => @raffle.id, :confirmed => true).count %>
+  </div>
+  <div class="not-confirmed-num">
+    Pagos no confirmados: <%= Participate.where(:raffle_id => @raffle.id, :confirmed => false).count %>
+  </div>
+</div>
+
+<ul class="participants">
+<% @participants.each do |p| %>
+  <li>
+    <%= form_tag confirm_raffle_confirmations_path do %>
+      <%= hidden_field_tag :participate_id, p.id %>
+      <div class="participation">
+        <div class="participant-name">
+          <%= p.user.first_name + " " + p.user.last_name + " (" + p.user.email + ") - Número: " + p.number.to_s %>
+        </div>
+        <div class="participant-confirm">
+          <% if !p.confirmed %>
+            <%= submit_tag 'Confirmar Pago', :class => "confirm-btn" %>
+          <% else %>
+            <div class="confirmed">
+              Confirmado
+            </div>
+          <% end %>
+        </div>
+      </div>
+    <% end %>
+  </li>
+<% end %>
+</ul>
+
+<%= link_to 'Volver', created_user_path(current_user.id), :class => "back-button" %>

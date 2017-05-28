@@ -8,7 +8,7 @@ class ParticipatesController < ApplicationController
   def multi_create
     print params[:user_id]
     params[:numbers].each do |n|
-      @participate = Participate.new(user_id: params[:user_id], raffle_id: params[:raffle_id], number: n )
+      @participate = Participate.new(user_id: params[:user_id], raffle_id: params[:raffle_id], number: n, confirmed: false)
       
       if not @participate.save
         respond_to do |format|

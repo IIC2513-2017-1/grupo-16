@@ -1,0 +1,68 @@
+// Place all the styles related to the confirmations controller here.
+// They will automatically be included in application.css.
+// You can use Sass (SCSS) here: http://sass-lang.com/
+
+.participants {
+  list-style: none;
+  text-align: center;
+  padding-left: 0px;
+}
+
+.participant-name, .participant-confirm {
+  display: inline-block;
+}
+
+.confirm-btn {
+  color: #e51818;
+  border: 1px solid #ccc;
+  font-size: 16px;
+  margin-left: 10px;
+  margin-right: 10px;
+  padding: 5px;
+  border-radius: 4px;
+  background-color: #ffc400;
+}
+
+.confirm-btn:hover {
+  background-color: #ce9e00;
+  cursor: pointer;
+  color: #a82929;
+}
+
+.participation {
+  padding-top: 10px;
+  padding-bottom: 5px;
+}
+
+.confirmed {
+  margin-left: 15px;
+  margin-right: 10px;
+  text-transform: uppercase;
+  font-weight: bold;
+  font-size: 16px;
+  color: #009900;
+  text-align: center;
+}
+
+.confirm-info {
+  width: 100%;
+  text-align: center;
+}
+
+.confirmed-num, .not-confirmed-num {
+  display: inline-block;
+  margin-top: 10px;
+  margin-bottom: 5px;
+  margin-left: 10px;
+  margin-right: 10px;
+  text-align: center;
+  font-size: 18px;
+}
+
+.confirmed-num {
+  color: #009900;
+}
+
+.not-confirmed-num {
+  color: #FF0000;
+}

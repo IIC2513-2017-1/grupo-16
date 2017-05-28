@@ -22,6 +22,14 @@
   color: #261414;
 }
 
+.subtitle {
+  text-align: center;
+  font-weight: normal;
+  font-size: 24px;
+  font-family: Helvetica, Arial, sans-serif;
+  color: #261414;
+}
+
 .notice {
   color: #ff0000;
 }
