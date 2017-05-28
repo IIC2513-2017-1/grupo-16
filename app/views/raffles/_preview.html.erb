@@ -14,7 +14,7 @@
   Premio: <%= raffle.prize %>
 </div>
 <div class="price">
-  Valor: <%= raffle.price %>
+  Valor: $<%= number_with_delimiter(raffle.price, delimiter: ".") %>
 </div>
 <div class="remaining_numbers">
   Números disponibles: <%= raffle.max_number - Participate.where("raffle_id = ?", raffle.id).count %>

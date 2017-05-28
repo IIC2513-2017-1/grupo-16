@@ -87,6 +87,10 @@
   margin-bottom: 10px;
 }
 
+.no-list {
+  list-style: none;
+}
+
 .rifapp-btn:hover {
   background-color: #ce9e00;
   cursor: pointer;

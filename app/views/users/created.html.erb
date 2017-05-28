@@ -1,7 +1,7 @@
 <% if @user.raffles.length == 0 %>
 	<div class="warning">No tienes rifas creadas. Por favor crea una nueva rifa apretando el bot&oacute;n "Nueva Rifa"</div>
 <% end %>
-<ol>
+<ol class="no-list">
   <% @user.raffles.each do |r| %>
     <li class="raffle-stream-item"><%= render 'raffles/preview', raffle: r %></li>
   <% end %>
