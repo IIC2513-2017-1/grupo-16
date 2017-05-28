@@ -1,3 +1,5 @@
 <ol>
-  <li class="raffle-stream-item"><%= render 'raffles/preview', raffle: r %></li>
+  <% Raffle.all.each do |r| %>
+    <li class="raffle-stream-item"><%= render 'raffles/preview', raffle: r %></li>
+  <% end %>
 </ol>
