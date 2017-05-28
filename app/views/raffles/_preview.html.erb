@@ -3,6 +3,9 @@
     <%= "#{raffle.name}" %>
   </strong>
 </div>
+<div class="raffle-img">
+  <%= image_tag raffle.image.url, width: 150, height: 150 %>
+</div>
 <div class="author-info">
   <span class="raffle-author-name">Creada por: <%= "#{raffle.user.full_name}" %></span>
   <span class="raffle-author-email">(<%="#{raffle.user.email}" %>)</span>

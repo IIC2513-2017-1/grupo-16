@@ -37,6 +37,10 @@
 
 .raffle-name {
 	text-align: center;
+	font-weight: bold;
+	font-size: 24px;
+	padding-top: 10px;
+	padding-bottom: 5px;
 }
 
 .rifapp-actions {
@@ -57,4 +61,14 @@
 .raffle-stream-item {
 	margin-top: 10px;
 	margin-bottom: 10px;
+}
+
+.raffle-img {
+	text-align: center;
+	padding-top: 5px;
+	padding-bottom: 5px;
+}
+
+.raffle-img > img {
+	border-radius: 75px;
 }
