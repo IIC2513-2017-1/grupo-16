@@ -31,7 +31,7 @@ class RafflesController < ApplicationController
     @raffle.update(user_id: current_user.id)
     respond_to do |format|
       if @raffle.save
-        format.html { redirect_to @raffle, notice: 'Raffle was successfully created.' }
+        format.html { redirect_to created_user_path(current_user.id), notice: 'Raffle was successfully created.' }
         format.json { render :show, status: :created, location: @raffle }
       else
         format.html { render :new }
@@ -45,7 +45,7 @@ class RafflesController < ApplicationController
   def update
     respond_to do |format|
       if @raffle.update(raffle_params)
-        format.html { redirect_to @raffle, notice: 'Raffle was successfully updated.' }
+        format.html { redirect_to created_user_path(current_user.id), notice: 'Raffle was successfully updated.' }
         format.json { render :show, status: :ok, location: @raffle }
       else
         format.html { render :edit }
@@ -59,7 +59,7 @@ class RafflesController < ApplicationController
   def destroy
     @raffle.destroy
     respond_to do |format|
-      format.html { redirect_to raffles_url, notice: 'Raffle was successfully destroyed.' }
+      format.html { redirect_to created_user_path(current_user.id), notice: 'Raffle was successfully destroyed.' }
       format.json { head :no_content }
     end
   end
@@ -72,6 +72,6 @@ class RafflesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def raffle_params
-      params.require(:raffle).permit(:name, :prize, :price, :finish_date, :max_number)
+      params.require(:raffle).permit(:name, :prize, :price, :finish_date, :max_number, :image)
     end
 end

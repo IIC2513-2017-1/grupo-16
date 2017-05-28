@@ -23,6 +23,11 @@
     </div>
 
     <div class="field">
+      <%= f.label :image, "Imagen:" %>
+      <%= f.file_field :image, accept: 'image/png,image/gif,image/jpeg' %>
+    </div>
+
+    <div class="field">
       <%= f.label :price, "Precio:" %>
       <%= f.number_field :price %>
     </div>
