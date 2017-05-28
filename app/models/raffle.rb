@@ -9,4 +9,6 @@ class Raffle < ActiveRecord::Base
 	has_many :participates
 	has_many :bookmarks
 	has_many :comments
+
+	mount_uploader :image, ImageUploader
 end

@@ -10,7 +10,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20170528163659) do
+ActiveRecord::Schema.define(version: 20170528225352) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
@@ -54,6 +54,7 @@ ActiveRecord::Schema.define(version: 20170528163659) do
     t.datetime "finish_date"
     t.integer  "user_id"
     t.integer  "max_number"
+    t.string   "image"
     t.index ["user_id"], name: "index_raffles_on_user_id", using: :btree
   end
 
