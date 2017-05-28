@@ -1,7 +1,3 @@
 <ol>
-  <% Raffle.where("NOT user_id = ?", @user.id).each do |r| %>
-    <% if not Participate.where("raffle_id = ? AND user_id = ?", r.id, @user.id).exists? %>
-      <li class="raffle-stream-item"><%= render 'raffles/preview', raffle: r %></li>
-    <% end %>
-  <% end %>
+  <li class="raffle-stream-item"><%= render 'raffles/preview', raffle: r %></li>
 </ol>
