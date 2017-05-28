@@ -72,6 +72,6 @@ class RafflesController < ApplicationController
 
     # Never trust parameters from the scary internet, only allow the white list through.
     def raffle_params
-      params.require(:raffle).permit(:name, :prize, :price, :finish_date)
+      params.require(:raffle).permit(:name, :prize, :price, :finish_date, :max_number)
     end
 end

@@ -32,6 +32,11 @@
       <%= f.datetime_select :finish_date %>
     </div>
 
+    <div class="field">
+      <%= f.label :max_number, "Número de rifas a vender:" %>
+      <%= f.number_field :max_number, min: 1 %>
+    </div>
+
     <div class="actions">
       <%= f.submit "Crear" %>
     </div>

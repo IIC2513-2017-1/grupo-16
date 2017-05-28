@@ -16,6 +16,9 @@
 <div class="price">
   Valor: <%= raffle.price %>
 </div>
+<div class="remaining_numbers">
+  Números disponibles: <%= raffle.max_number - Participate.where("raffle_id = ?", raffle.id).count %>
+</div>
 <div class="finish-date">
   Termina en: <%= distance_of_time_in_words(Time.now, raffle.finish_date) %>
 </div>
