@@ -14,7 +14,14 @@ Rails.application.routes.draw do
   end
 
   resource :session, only: [:new, :create, :destroy]
-  resource :participates, only: [:create]
+
+  resource :participates, only: [] do
+    collection do
+      get 'multi_new'
+      post 'multi_create'
+    end
+  end
+
   resource :bookmarks, only: [:create, :destroy]
 
   # The priority is based upon order of creation: first created -> highest priority.
