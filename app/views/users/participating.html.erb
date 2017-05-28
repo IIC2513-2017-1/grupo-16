@@ -1,5 +1,5 @@
 <ol>
-  <% @user.participates.each do |p| %>
-    <li class="raffle-stream-item"><%= render 'raffles/preview', raffle: Raffle.find(p.raffle_id) %></li>
+  <% @user.participates.group_by{ |part| part.raffle_id }.keys.each do |r| %>
+    <li class="raffle-stream-item"><%= render 'raffles/preview', raffle: Raffle.find(r) %></li>
   <% end %>
 </ol>
