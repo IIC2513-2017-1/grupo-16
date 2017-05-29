@@ -1,0 +1,3 @@
+<%= @buyer.first_name + " " + @buyer.last_name %> ha comprado números en tu rifa, <%= @user.first_name %>!
+
+Para revisar tus pagos no confirmados de esta rifa, has click <%= link_to 'en este link.', raffle_confirmations_url(raffle_id: @r_id) %>

@@ -1,0 +1,12 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h2><%= @buyer.first_name + " " + @buyer.last_name %> ha comprado números en tu rifa, <%= @user.first_name %>!</h1>
+    <p>
+      Para revisar tus pagos no confirmados, has click <%= link_to 'en este link.', raffle_confirmations_url(raffle_id: @r_id) %> <br>
+    </p>
+  </body>
+</html>

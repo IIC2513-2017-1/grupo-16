@@ -18,6 +18,7 @@ class ParticipatesController < ApplicationController
       end
     end
     respond_to do |format|
+      ParticipateMailer.new_participate_email(User.find(Raffle.find(params[:raffle_id]).user_id), User.find(params[:user_id]), params[:raffle_id]).deliver!
       format.html { redirect_to participating_user_path(params[:user_id]), notice: 'Ya estás participando en esta rifa (pago pendiente)!' }
       format.json { render participating_user_path(params[:user_id]), status: :created, location: @participate }
     end
