@@ -1,5 +1,5 @@
 class ConfirmationsController < ApplicationController
-  before_action :set_raffle, only: [:show]
+  before_action :set_raffle, only: [:show, :confirm]
   before_action :set_participants, only: [:show]
 
   def show
@@ -11,6 +11,7 @@ class ConfirmationsController < ApplicationController
 
     respond_to do |format|
       if @participate.save
+        ConfirmationMailer.confirmed_email(User.find(@participate.user_id), User.find(@raffle.user_id)).deliver!
         format.html { redirect_to raffle_confirmations_path(params[:raffle_id]), notice: 'Pago Confirmado!' }
       else
         format.html { redirect_to raffle_confirmations_path(params[:raffle_id]), notice: 'Error al confirmar pago' }
