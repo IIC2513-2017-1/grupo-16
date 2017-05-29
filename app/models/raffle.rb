@@ -10,5 +10,7 @@ class Raffle < ActiveRecord::Base
 	has_many :bookmarks
 	has_many :comments
 
+	has_one :winner, :foreign_key => "winner_id", :class_name => "User"
+
 	mount_uploader :image, ImageUploader
 end

@@ -1,5 +1,5 @@
 class ConfirmationsController < ApplicationController
-  before_action :set_raffle, only: [:show]
+  before_action :set_raffle, only: [:show, :generate_winner]
   before_action :set_participants, only: [:show]
 
   def show
@@ -14,6 +14,21 @@ class ConfirmationsController < ApplicationController
         format.html { redirect_to raffle_confirmations_path(params[:raffle_id]), notice: 'Pago Confirmado!' }
       else
         format.html { redirect_to raffle_confirmations_path(params[:raffle_id]), notice: 'Error al confirmar pago' }
+      end
+    end
+  end
+
+  def generate_winner
+    confirmed_participants = Participate.where("raffle_id = ? AND confirmed = true", params[:raffle_id])
+    winner_participant_array = confirmed_participants.sample(1)
+    winner_participant = winner_participant_array[0]
+    @raffle.update(winner_id: winner_participant.user_id)
+
+    respond_to do |format|
+      if @raffle.save
+        format.html { redirect_to created_user_path(current_user.id), notice: 'Rifa Sorteada!' }
+      else
+        format.html { redirect_to created_user_path(current_user.id), notice: 'Error al sortear rifa' }
       end
     end
   end

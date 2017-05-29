@@ -6,6 +6,7 @@ Rails.application.routes.draw do
       collection do
         get 'show'
         post 'confirm'
+        post 'generate_winner'
       end
     end
   end

@@ -47,7 +47,7 @@
 	text-align: center;
 }
 
-.rifapp-actions > a {
+.rifapp-actions > a, .rifapp-actions > form > input[type="submit"] {
   background-color: #ffc400;
   border-radius: 4px;
   border: 1px solid #ccc;
@@ -56,6 +56,34 @@
   padding: 5px;
   margin-top: 5px;
   margin-bottom: 10px;
+}
+
+.rifapp-actions > form > input[type="submit"] {
+  display: inline-block;
+  background-color: #ffc400;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  color: #e51818;
+  padding: 5px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+  width: 80px;
+  margin-right: 45%;
+  margin-left: 45%;
+  text-decoration: underline;
+}
+
+.rifapp-actions > a:hover {
+  background-color: #ce9e00;
+  cursor: pointer;
+  color: #a82929;
+}
+
+.rifapp-actions > form > input[type="submit"]:hover {
+  background-color: #ce9e00;
+  cursor: pointer;
+  color: #a82929;
 }
 
 .raffle-stream-item {
@@ -71,4 +99,18 @@
 
 .raffle-img > img {
 	border-radius: 75px;
+}
+
+.sortear-btn {
+  background-color: #ffc400;
+  border-radius: 4px;
+  border: 1px solid #ccc;
+  font-size: 14px;
+  color: #e51818;
+  padding: 5px;
+  margin-top: 5px;
+  margin-bottom: 10px;
+  width: 80px;
+  margin-right: 45%;
+  margin-left: 45%;
 }

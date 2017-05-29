@@ -23,7 +23,16 @@
   Números disponibles: <%= raffle.max_number - Participate.where("raffle_id = ?", raffle.id).count %>
 </div>
 <div class="finish-date">
-  Termina en: <%= distance_of_time_in_words(Time.now, raffle.finish_date) %>
+  <% if Time.now < raffle.finish_date %>
+    Termina en: <%= distance_of_time_in_words(Time.now, raffle.finish_date) %>
+  <% else %>
+    Finalizada
+    <br/>
+    <% if raffle.winner_id %>
+      <% winner = User.find(raffle.winner_id) %>
+      Ganador: <%= winner.first_name + " " + winner.last_name + " (" + winner.email + ")" %>
+    <% end %>
+  <% end %>
 </div>
 <div class="rifapp-actions">
 <% if raffle.max_number - Participate.where("raffle_id = ?", raffle.id).count  > 0 %>
@@ -41,8 +50,14 @@
   <%= link_to 'Comentarios', raffle_comments_path(raffle.id), :class => "center" %>
 <% end %>
 <% if current_user and raffle.user_id == current_user.id and not current_controller?("comments") %>
-  <%= link_to 'Confirmar', raffle_confirmations_path(:raffle_id => raffle.id, :user_id => current_user.id), :class => "center" %>
+  <%= link_to 'Confirmar', raffle_confirmations_path(:raffle_id => raffle.id), :class => "center" %>
   <%= link_to 'Editar', edit_raffle_path(raffle.id), :class => "center" %>
   <%= link_to 'Eliminar', raffle_path(raffle.id), method: :delete, :class => "center" %>
+  <% if !raffle.winner_id and Participate.where("raffle_id = ? AND confirmed = true", raffle.id).count > 0 %>
+    <%= form_tag generate_winner_raffle_confirmations_path(:raffle_id => raffle.id) do %>
+      <%= hidden_field_tag :raffle_id, raffle.id %>
+      <%= submit_tag 'Sortear', :class => "center sortear-btn" %>
+    <% end %>
+  <% end %>
 <% end %>
 </div>
