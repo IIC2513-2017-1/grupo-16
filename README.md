@@ -20,7 +20,7 @@ Gestor de Rifas
 
 Por favor asegurarse de tener instaladas las versiones de **Ruby**, **Rails**, **Bundler** y **PostgreSQL**.
 
-`git clone https://github.com/https://github.com/IIC2513-2017-1/grupo-16`
+`git clone https://github.com/IIC2513-2017-1/grupo-16`
 
 `cd grupo-16`
 
