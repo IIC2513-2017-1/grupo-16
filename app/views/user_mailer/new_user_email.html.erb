@@ -1,0 +1,16 @@
+<!DOCTYPE html>
+<html>
+  <head>
+    <meta content='text/html; charset=UTF-8' http-equiv='Content-Type' />
+  </head>
+  <body>
+    <h1>Bienvenido a Rifapp, <%= @user.first_name + " " + @user.last_name %>!</h1>
+    <p>
+      Tu cuenta ha sido creada con éxito.<br>
+    </p>
+    <p>
+      Para iniciar sesión en el sitio, has click <%= link_to 'en este link.', new_session_url %>
+    </p>
+    <p>Gracias por unirte, ahora puedes crear y participar en rifas!</p>
+  </body>
+</html>
