@@ -1,6 +1,7 @@
 # Feedback Entrega 4:
 
-* poner numero en mail de pago confirmado
+* poner numero en mail de pago confirmado <span style="color:green">CHECK</span>
+* cambiar layout comprar numeros <span style="color:green">CHECK</span>
 * validacion de precio
 * mostrar numeros comfirmados
 * cambiar label de boton crear en editar de rifapp
