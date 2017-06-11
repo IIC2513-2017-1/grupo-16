@@ -2,7 +2,7 @@
 
 <span id="nan-error"class="error"></span>
 
-<%= form_tag multi_create_participates_path do  %>
+<%= form_tag multi_create_participates_path, :id => "check-box-list-form" do  %>
   <ul class="check-box-list center">
     <% (1..Raffle.find(params[:raffle_id]).max_number).each do |i| %>
       <% if not @taken.include?(i) %>

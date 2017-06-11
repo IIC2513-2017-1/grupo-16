@@ -2,8 +2,7 @@
 // All this logic will automatically be available in application.js.
 $(document).on('turbolinks:load', function () {
   $("#number-search").bind("keyup", function() {
-    var formData = $("#number-search").val(); // grab the form wrapping the search bar.
-    console.log(formData)
+    var formData = $("#number-search").val();
 
     $(".check-box-item").each(function() {
       if (isNaN(formData)) {
@@ -18,6 +17,14 @@ $(document).on('turbolinks:load', function () {
         $("#nan-error").html("");
       }
     });
+  })
 
+  $("#check-box-list-form").bind("submit", function(event) {
+    if ($("input[type='checkbox'][name='numbers[]']:checked").length === 0) {
+      $("#nan-error").html("Debes seleccionar al menos un número.");
+      return false;
+    }
   });
 });
+
+

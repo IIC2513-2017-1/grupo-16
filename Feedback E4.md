@@ -13,7 +13,7 @@
 * gitignore uploads/raffle/image <span style="color:red">TODO</span>
 * gema whenever? para cronjob???? (creo que no lo haremos)
 * revisar boton de guardar <span style="color:green">CHECK</span>
-* validacion comprar numero no vacio
-* revisar validaciones
-* revisar navegacion
+* validacion comprar numero no vacio <span style="color:green">CHECK</span>
+* revisar validaciones <span style="color:red">TODO</span>
+* revisar navegacion????
 * mandar mail al ganador
