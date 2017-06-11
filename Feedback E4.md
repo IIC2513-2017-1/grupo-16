@@ -3,7 +3,7 @@
 * poner numero en mail de pago confirmado <span style="color:green">CHECK</span>
 * cambiar layout comprar numeros <span style="color:green">CHECK</span>
 * validacion de precio <span style="color:green">CHECK</span>
-* mostrar numeros comfirmados
+* mostrar numeros comfirmados <span style="color:green">CHECK</span>
 * cambiar label de boton crear en editar de rifapp
 * cambiar label de comfirmar para vista de rifa creada (Detalles?)
 * cambiar css forms
@@ -16,5 +16,4 @@
 * validacion comprar numero no vacio
 * revisar validaciones
 * revisar navegacion
-* mostrar numeros comprados que estan comfirmados
 * mandar mail al ganador
