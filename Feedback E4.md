@@ -9,7 +9,7 @@
 * cambiar css forms
 * reorganizar layouts, no todo centrado
 * agregar mas de un premio (modelo premio?)
-* borrar sorteo
+* borrar sorteo <span style="color:green">CHECK</span>
 * gitignore uploads/raffle/image
 * gema whenever? para cronjob??
 * revisar boton de guardar
