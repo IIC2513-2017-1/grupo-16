@@ -43,7 +43,7 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Crear" %>
+      <%= f.submit ( f.object.new_record? ? "Crear" : "Editar") %>
     </div>
   </div>
 <% end %>
