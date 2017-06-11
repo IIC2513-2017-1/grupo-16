@@ -3,6 +3,8 @@ $(document).ready(function (){
 	if (($raffles = $('.raffle-link')).length){
 		$raffles.on('ajax:success', function (e, data){
 			console.log(data);
+			$('#raffle-placeholder').remove();
+
 			$('.raffle-name').text(data.raffle.name);
 			var img = $('<img />');
 			img.attr('src', data.raffle.image.url)

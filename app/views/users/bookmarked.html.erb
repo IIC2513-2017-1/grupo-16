@@ -1,5 +1,38 @@
+
+<div class="container">
+  <div class="left-column">
+    <h1>Rifas Guardadas</h1>
+    <ol class="no-list">
+    <% @user.bookmarks.each do |b| %>
+    	<li>
+    		<%= r = Raffle.find(b.raffle_id) %>
+    		<%= link_to r.name, raffle_path(r.id), method: :get, data: {}, remote: true, :class => "raffle-link" %>
+    	</li>
+    <% end %>
+	</ol>
+  </div>
+  <div class="right-column">
+    <h1>Detalle</h1>
+    <h2 id="raffle-placeholder">Selecciona una rifa</h2>
+    <div class="raffle-name"></div>
+	<div class="raffle-img"></div>
+	<div class="author-info">
+	  <span class="raffle-author-name"></span>
+	  <span class="raffle-author-email"></span>
+	</div>
+	<div class="timestamp"></div>
+	<div class="prize"></div>
+	<div class="price"></div>
+	<div class="remaining_numbers"></div>
+	<div class="finish-date"></div>
+	<div class="rifapp-actions"></div>
+  </div>
+</div>
+
+<!--
 <ol class="no-list">
   <% @user.bookmarks.each do |b| %>
     <li class="raffle-stream-item"><%= render 'raffles/preview', raffle: Raffle.find(b.raffle_id) %></li>
   <% end %>
 </ol>
+-->
