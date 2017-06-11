@@ -1,11 +1,41 @@
 <% if @user.raffles.length == 0 %>
 	<div class="warning">No tienes rifas creadas. Por favor crea una nueva rifa apretando el bot&oacute;n "Nueva Rifa"</div>
 <% end %>
+
+<div class="container">
+  <div class="left-column">
+    <h1>Mis Rifas</h1>
+    <ol class="no-list">
+    <% @user.raffles.each do |r| %>
+    	<li>
+    		<%= link_to r.name, raffle_path(r.id), method: :get, data: {}, remote: true, :class => "raffle-link" %>
+    	</li>
+    <% end %>
+	</ol>
+  </div>
+  <div class="right-column">
+    <h1>Detalle</h1>
+    <div class="raffle-name"></div>
+	<div class="raffle-img"></div>
+	<div class="author-info">
+	  <span class="raffle-author-name"></span>
+	  <span class="raffle-author-email"></span>
+	</div>
+	<div class="timestamp"></div>
+	<div class="prize"></div>
+	<div class="price"></div>
+	<div class="remaining_numbers"></div>
+	<div class="finish-date"></div>
+	<div class="rifapp-actions"></div>
+  </div>
+</div>
+<!--
 <ol class="no-list">
   <% @user.raffles.each do |r| %>
     <li class="raffle-stream-item"><%= render 'raffles/preview', raffle: r %></li>
   <% end %>
 </ol>
+-->
 <div class="btn">
 <%= link_to 'Nueva Rifa', new_raffle_path, :class => "rifapp-btn" %>
 </div>

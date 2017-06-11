@@ -27,3 +27,41 @@
   border-radius: 4px;
   margin: 15px;
 }
+
+.container {
+  margin-left: 15px;
+  margin-right: 15px;
+  margin-top: 10px;
+  margin-bottom: 10px;
+}
+
+.left-column {
+  border: 1px solid #ccc;
+  margin: 10px;
+  display: inline-block;
+  min-width: 300px;
+  min-height: 400px;
+  padding: 10px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.right-column {
+  border: 1px solid #ccc;
+  margin: 10px;
+  display: inline-block;
+  min-width: 600px;
+  min-height: 400px;
+  padding: 10px;
+  border-radius: 4px;
+  overflow: hidden;
+}
+
+.right-column > h1 {
+  text-align: center;
+}
+
+.rifapp-actions > a {
+  margin-left: 5px;
+  margin-right: 5px;
+}

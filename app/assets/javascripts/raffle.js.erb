@@ -1,0 +1,104 @@
+$(document).ready(function (){
+	var $raffles;
+	if (($raffles = $('.raffle-link')).length){
+		$raffles.on('ajax:success', function (e, data){
+			console.log(data);
+			$('.raffle-name').text(data.raffle.name);
+			var img = $('<img />');
+			img.attr('src', data.raffle.image.url)
+			img.attr('height', 150);
+			img.attr('width', 150);
+			$('.raffle-img').html(img);
+
+			$('.raffle-author-name').text('Creada por: ' + data.user.first_name + ' ' + data.user.last_name);
+			$('.raffle-author-email').text('(' + data.user.email + ')');
+
+			var date = new Date(data.raffle.created_at);
+			$('.timestamp').text('Creada el ' + date.toDateString());
+			$('.prize').text('Premio: ' + data.raffle.prize);
+			$('.price').text('Valor: $' + data.raffle.price);
+
+			var remaining_numbers = data.raffle.max_number - data.numbers_bought;
+			$('.remaining_numbers').text('Números disponibles: ' + remaining_numbers.toString());
+
+			var finish_date = new Date(data.raffle.finish_date);
+			if (Date.now < data.raffle.finish_date){
+				$('.finish_date').text('Termina el ', finish_date.toDateString());
+			} else {
+				if (data.raffle.winner){
+					$('.finish_date').text('Finalizada, el ganador es: ' + data.winner.first_name + ' ' + data.winner.last_name + ' (' + data.winner.email + ')')
+				} else {
+					$('.finish_date').text('Finalizada');
+				}
+			}
+
+			$('.rifapp-actions').empty();
+
+			if (remaining_numbers > 0){
+				var buy_link = $('<a />');
+				buy_link.attr('href', '/participates/multi_new?raffle_id=' + data.raffle.id);
+				buy_link.text('Comprar números');
+				buy_link.attr('class', 'center');
+				$('.rifapp-actions').append(buy_link);
+			}
+
+			if (data.current_user){
+				if (!data.bookmark_exists){
+					var bookmark_link = $('<a />');
+					bookmark_link.attr('href', '/bookmarks?raffle_id=' + data.raffle.id + '&user_id=' + data.current_user.id);
+					bookmark_link.data('method', 'post');
+					bookmark_link.attr('class', 'center');
+					bookmark_link.text('Guardar');
+					$('.rifapp-actions').append(bookmark_link);
+				} else {
+					var bookmark_link = $('<a />');
+					bookmark_link.attr('href', '/bookmarks?raffle_id=' + data.raffle.id + '&user_id=' + data.current_user.id);
+					bookmark_link.data('method', 'delete');
+					bookmark_link.attr('class', 'center');
+					bookmark_link.text('Remover de Guardados');
+					$('.rifapp-actions').append(bookmark_link);
+				}
+			}
+
+			var comment_link = $('<a />');
+			comment_link.text('Comentarios');
+			comment_link.attr('href', '/raffles/' + data.raffle.id + '/comments');
+			comment_link.attr('class', 'center');
+			$('.rifapp-actions').append(comment_link);
+
+			if (data.current_user){
+				if (data.current_user.id == data.raffle.user_id){
+					var confirm_link = $('<a />');
+					confirm_link.text('Confirmar');
+					confirm_link.attr('class', 'center');
+					confirm_link.attr('href', '/raffles/' + data.raffle.id + '/confirmations/show');
+					$('.rifapp-actions').append(confirm_link);
+
+					var edit_link = $('<a />');
+					edit_link.text('Editar');
+					edit_link.attr('class', 'center');
+					edit_link.attr('href', '/raffles/' + data.raffle.id + '/edit');
+					$('.rifapp-actions').append(edit_link);
+
+					var delete_link = $('<a />');
+					delete_link.text('Eliminar');
+					delete_link.attr('class', 'center');
+					delete_link.attr('href', '/raffles/' + data.raffle.id);
+					delete_link.data('method', 'delete');
+					$('.rifapp-actions').append(delete_link);
+
+					var sort_link = $('<a />');
+					sort_link.text('Sortear');
+					sort_link.attr('class', 'center sortear-btn');
+					sort_link.data('method', 'post');
+					sort_link.attr('href', '/raffles/' + data.raffle.id + '/confirmations/generate_winner');
+					$('.rifapp-actions').append(sort_link);
+				}
+			}
+
+		}).on('ajax:error', function (e, data){
+			console.log('ERROR')
+			console.log(data);
+		});
+	}
+});
