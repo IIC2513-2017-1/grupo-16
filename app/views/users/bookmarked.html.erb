@@ -5,7 +5,7 @@
     <ol class="no-list">
     <% @user.bookmarks.each do |b| %>
     	<li>
-    		<%= r = Raffle.find(b.raffle_id) %>
+    		<% r = Raffle.find(b.raffle_id) %>
     		<%= link_to r.name, raffle_path(r.id), method: :get, data: {}, remote: true, :class => "raffle-link" %>
     	</li>
     <% end %>

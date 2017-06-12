@@ -47,17 +47,52 @@ $(document).ready(function (){
 			if (data.current_user){
 				if (!data.bookmark_exists){
 					var bookmark_link = $('<a />');
-					bookmark_link.attr('href', '/bookmarks?raffle_id=' + data.raffle.id + '&user_id=' + data.current_user.id);
 					bookmark_link.data('method', 'post');
 					bookmark_link.attr('class', 'center');
+					bookmark_link.data('remote', 'true');
 					bookmark_link.text('Guardar');
+					
+					bookmark_link.on('click', function (e){
+						$.ajax({
+							method: 'post',
+							url: '/bookmarks',
+							data: {
+								raffle_id: data.raffle.id,
+								user_id: data.current_user.id
+							},
+							success: function(e){
+								alert('Su rifa ha sido guardada exitosamente!');
+							},
+							error: function (e){
+								alert('Ha ocurrido un error. Por favor intente nuevamente.');
+							}
+						})
+					});
+
 					$('.rifapp-actions').append(bookmark_link);
 				} else {
 					var bookmark_link = $('<a />');
-					bookmark_link.attr('href', '/bookmarks?raffle_id=' + data.raffle.id + '&user_id=' + data.current_user.id);
 					bookmark_link.data('method', 'delete');
 					bookmark_link.attr('class', 'center');
 					bookmark_link.text('Remover de Guardados');
+
+					bookmark_link.on('click', function (e){
+						$.ajax({
+							method: 'delete',
+							url: '/bookmarks',
+							data: {
+								raffle_id: data.raffle.id,
+								user_id: data.current_user.id
+							},
+							success: function (e){
+								alert('La rifa ha sido eliminada de tus guardadas!');
+							},
+							error: function (e){
+								alert('Ha ocurrido un error. Por favor intente nuevamente.');
+							}
+						})
+					})
+
 					$('.rifapp-actions').append(bookmark_link);
 				}
 			}
@@ -85,15 +120,47 @@ $(document).ready(function (){
 					var delete_link = $('<a />');
 					delete_link.text('Eliminar');
 					delete_link.attr('class', 'center');
-					delete_link.attr('href', '/raffles/' + data.raffle.id);
 					delete_link.data('method', 'delete');
+
+					delete_link.on('click', function (e){
+						$.ajax({
+							method: 'delete',
+							url: '/raffles/' + data.raffle.id,
+							data: {
+								raffle_id: data.raffle.id
+							},
+							success: function (e){
+								alert('La rifa ha sido eliminada exitosamente!');
+							},
+							error: function (e){
+								alert('Ha ocurrido un error. Por favor intente nuevamente.');
+							}
+						})
+					})
+
 					$('.rifapp-actions').append(delete_link);
 
 					var sort_link = $('<a />');
 					sort_link.text('Sortear');
 					sort_link.attr('class', 'center sortear-btn');
 					sort_link.data('method', 'post');
-					sort_link.attr('href', '/raffles/' + data.raffle.id + '/confirmations/generate_winner');
+
+					sort_link.on('click', function (e){
+						$.ajax({
+							method: 'post',
+							url: '/raffles/' + data.raffle.id + '/confirmations/generate_winner',
+							data: {
+								raffle_id: data.raffle.id
+							},
+							success: function (e){
+								alert('Se ha sorteado el ganador!');
+							},
+							error: function (e){
+								alert('Ha ocurrido un error. Por favor intente nuevamente.');
+							}
+						})
+					})
+
 					$('.rifapp-actions').append(sort_link);
 				}
 			}
