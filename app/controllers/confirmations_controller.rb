@@ -27,6 +27,7 @@ class ConfirmationsController < ApplicationController
 
     respond_to do |format|
       if @raffle.save
+        ConfirmationMailer.winner_email(@raffle).deliver!
         format.html { redirect_to created_user_path(current_user.id), notice: 'Rifa Sorteada!' }
       else
         format.html { redirect_to created_user_path(current_user.id), notice: 'Error al sortear rifa' }
