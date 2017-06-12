@@ -30,12 +30,20 @@
 		<% end%>
 	</ul>
 </div>
+<div class="numbers-bought">
+	<h5 class="numbers-bought-title">N&uacute;meros Confirmados</h5>
+	<ul>
+		<% @user.participates.where("raffle_id = ? AND confirmed = true", raffle.id).order("number").each do |part| %>
+			<li><%= part.number %></li>
+		<% end%>
+	</ul>
+</div>
 <div class="rifapp-actions">
 <% if raffle.max_number - Participate.where("raffle_id = ?", raffle.id).count  > 0 %>
   <%= link_to 'Comprar números', multi_new_participates_path(:raffle_id => raffle.id, :user_id => current_user.id), :class => "center" %>
 <% end %>
 
-<% if current_user and not raffle.user_id  == current_user.id and not Participate.where("raffle_id = ? AND user_id= ?", raffle.id, current_user.id).exists? %>
+<% if current_user %>
   <% if not Bookmark.where("raffle_id = ? AND user_id= ?", raffle.id, current_user.id).exists? %>
     <%= link_to 'Guardar', bookmarks_path(:raffle_id => raffle.id, :user_id => current_user.id), :method => :post, :class => "center" %>
   <% else %>

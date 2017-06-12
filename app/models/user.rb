@@ -5,7 +5,6 @@ class User < ActiveRecord::Base
 	validates :email, presence: true, uniqueness: true, allow_blank: false, format: /\A([^@\s]+)@((?:[-a-z0-9]+\.)+[a-z]{2,})\z/i
 
 	has_many :raffles
-	has_many :sorteos
 	has_many :participates
 	has_many :bookmarks
 	has_many :comments

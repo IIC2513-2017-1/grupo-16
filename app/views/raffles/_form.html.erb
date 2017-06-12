@@ -29,7 +29,7 @@
 
     <div class="field">
       <%= f.label :price, "Precio:" %>
-      <%= f.number_field :price %>
+      <%= f.number_field :price, min: 0 %>
     </div>
 
     <div class="field">
@@ -43,7 +43,7 @@
     </div>
 
     <div class="actions">
-      <%= f.submit "Crear" %>
+      <%= f.submit ( f.object.new_record? ? "Crear" : "Editar") %>
     </div>
   </div>
 <% end %>

@@ -39,7 +39,7 @@
   <%= link_to 'Comprar números', multi_new_participates_path(:raffle_id => raffle.id, :user_id => current_user.id), :class => "center" %>
 <% end %>
 
-<% if current_user and not raffle.user_id  == current_user.id and not Participate.where("raffle_id = ? AND user_id= ?", raffle.id, current_user.id).exists? %>
+<% if current_user %>
   <% if not Bookmark.where("raffle_id = ? AND user_id= ?", raffle.id, current_user.id).exists? %>
     <%= link_to 'Guardar', bookmarks_path(:raffle_id => raffle.id, :user_id => current_user.id), :method => :post, :class => "center" %>
   <% else %>
@@ -50,9 +50,9 @@
   <%= link_to 'Comentarios', raffle_comments_path(raffle.id), :class => "center" %>
 <% end %>
 <% if current_user and raffle.user_id == current_user.id and not current_controller?("comments") %>
-  <%= link_to 'Confirmar', raffle_confirmations_path(:raffle_id => raffle.id), :class => "center" %>
   <%= link_to 'Editar', edit_raffle_path(raffle.id), :class => "center" %>
   <%= link_to 'Eliminar', raffle_path(raffle.id), method: :delete, :class => "center" %>
+  <%= link_to 'Números comprados', raffle_confirmations_path(:raffle_id => raffle.id), :class => "center" %>
   <% if !raffle.winner_id and Participate.where("raffle_id = ? AND confirmed = true", raffle.id).count > 0 %>
     <%= form_tag generate_winner_raffle_confirmations_path(:raffle_id => raffle.id) do %>
       <%= hidden_field_tag :raffle_id, raffle.id %>
