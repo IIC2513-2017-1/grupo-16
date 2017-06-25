@@ -29,6 +29,10 @@ gem 'bcrypt', '~> 3.1.7'
 # CarrierWave for Image Uploading
 gem 'carrierwave', '~> 1.0'
 
+gem 'omniauth-twitter'
+gem 'rest-client'
+gem 'oauth'
+
 # Use Unicorn as the app server
 # gem 'unicorn'
 
