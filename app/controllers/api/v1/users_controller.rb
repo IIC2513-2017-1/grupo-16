@@ -32,7 +32,7 @@ module Api::V1
 
       def is_current_user?
         if User.find(params[:id]) != @current_user
-              render json: {error: "The token provided doesn match the one for the user requested."}
+          render json: {error: "The token provided doesn't match the one for the user requested."}
         end
       end
   end

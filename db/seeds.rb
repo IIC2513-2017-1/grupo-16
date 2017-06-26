@@ -31,10 +31,10 @@ raffle_data.each do |r|
 end
 
 participate_data = [
-  {user_id: users.last.id, raffle_id: raffles.first.id, number: 5},
-  {user_id: users.last.id, raffle_id: raffles.first.id, number: 7},
-  {user_id: users.first.id, raffle_id: raffles.last.id, number: 3},
-  {user_id: users.first.id, raffle_id: raffles.last.id, number: 6}
+  {user_id: users.last.id, raffle_id: raffles.first.id, number: 5, confirmed: false},
+  {user_id: users.last.id, raffle_id: raffles.first.id, number: 7, confirmed: false},
+  {user_id: users.first.id, raffle_id: raffles.last.id, number: 3, confirmed: false},
+  {user_id: users.first.id, raffle_id: raffles.last.id, number: 6, confirmed: false}
 ]
 
 participate_data.each do |p|
