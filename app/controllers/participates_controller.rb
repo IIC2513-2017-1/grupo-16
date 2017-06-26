@@ -2,11 +2,9 @@ class ParticipatesController < ApplicationController
 
   def multi_new
     @taken = Participate.where("raffle_id = ?", params[:raffle_id]).pluck("number")
-    print @taken
   end
 
   def multi_create
-    print params[:user_id]
     params[:numbers].each do |n|
       @participate = Participate.new(user_id: params[:user_id], raffle_id: params[:raffle_id], number: n, confirmed: false)
       

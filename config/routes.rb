@@ -42,6 +42,12 @@ Rails.application.routes.draw do
           get 'bookmarked'
         end
       end
+      resource :participates, only: [] do
+        collection do
+          get 'multi_new'
+          post 'multi_create'
+        end
+      end
     end
   end
   # The priority is based upon order of creation: first created -> highest priority.

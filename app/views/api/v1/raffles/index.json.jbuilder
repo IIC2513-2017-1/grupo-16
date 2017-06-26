@@ -1,3 +1,5 @@
+# frozen_string_literal: true
+
 json.raffles do
   json.array! @raffles do |raffle|
     json.id raffle.id
