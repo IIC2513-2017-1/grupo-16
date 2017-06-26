@@ -1,6 +1,6 @@
 module Api::V1
   class RafflesController < ApiController
-    before_action :authenticate
+    before_action :authenticate, only: %i[create]
 
     def create
       @raffle = @current_user.raffles.build(raffle_params)
