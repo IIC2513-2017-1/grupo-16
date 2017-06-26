@@ -2,6 +2,10 @@ module Api::V1
   class RafflesController < ApiController
     before_action :authenticate, only: %i[create]
 
+    def index
+      @raffles = Raffle.all
+    end
+
     def create
       @raffle = @current_user.raffles.build(raffle_params)
       return if @raffle.save
