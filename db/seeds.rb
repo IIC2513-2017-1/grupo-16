@@ -12,8 +12,10 @@ user_data = [
   {first_name: "Fernando", last_name: "Lizana", email: "flizana1@uc.cl", password: "blabla", password_confirmation: "blabla"}
 ]
 
-user_data.each do |u|
-  users.push(User.create(u))
+user_data.each do |ud|
+  user = User.create(ud)
+  user.generate_token_and_save
+  users.push(user)
 end
 
 raffles = []
