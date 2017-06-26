@@ -4,6 +4,7 @@
   <div class="current-user-first-name">Nombre: <%= "#{@user.first_name}" %></div>
   <div class="current-user-last-name">Apellido: <%= "#{@user.last_name}" %></div>
   <div class="current-user-email">Mail: <%="#{@user.email}" %></div>
+  <div class="current-user-token"><%= @user.token %></div>
 </div>
 
 <%= link_to 'Editar', edit_user_path(@user), :class => "back-button" %>
