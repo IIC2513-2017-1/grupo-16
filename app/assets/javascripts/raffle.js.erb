@@ -38,7 +38,7 @@ $(document).on('turbolinks:load', function (){
 
 			if (remaining_numbers > 0){
 				var buy_link = $('<a />');
-				buy_link.attr('href', '/participates/multi_new?raffle_id=' + data.raffle.id);
+				buy_link.attr('href', '/participates/multi_new?raffle_id=' + data.raffle.id + '&user_id=' + data.current_user.id);
 				buy_link.text('Comprar números');
 				buy_link.attr('class', 'center');
 				$('.rifapp-actions').append(buy_link);

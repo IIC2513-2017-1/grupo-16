@@ -74,6 +74,7 @@ class UsersController < ApplicationController
   end
 
   def participating
+    print "current_user" + current_user.id.to_s
   end
 
   def bookmarked
