@@ -45,6 +45,28 @@ $(document).on('turbolinks:load', function (){
 			}
 
 			if (data.current_user){
+				if ($('.bought').length > 0){
+					var bought_title = $('.numbers-bought-title');
+					bought_title.text('Números Comprados');
+					$('.bought').empty();
+					data.bought.forEach(function(number) {
+						var li = $('<li />');
+						li.text(number.number);
+						$('.bought').append(li);
+					});
+				}
+
+				if ($('.confirmed-numbers').length > 0){
+					var confirmed_title = $('.numbers-confirmed-title');
+					confirmed_title.text('Números Confirmados');
+					$('.confirmed-numbers').empty();
+					data.confirmed.forEach(function(number) {
+						var li = $('<li />');
+						li.text(number.number);
+						$('.confirmed-numbers').append(li);
+					});
+				}
+
 				if (!data.bookmark_exists){
 					var bookmark_link = $('<a />');
 					bookmark_link.data('method', 'post');
