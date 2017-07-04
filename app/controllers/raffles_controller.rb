@@ -61,8 +61,8 @@ class RafflesController < ApplicationController
     @raffle.update(user_id: current_user.id)
     respond_to do |format|
       if @raffle.save
-        status = 'Participa en la rifa ' + @raffle.name + '. Para visitarla ingresa a https://rifapp-web.herokuapp.com/'
-        access_token = prepare_access_token("579380079-H0XSnSliOSxBWhxbS92hMS0YwY58M3p42HHdU6z3", "7nFEoOrWxA9wuiRftv4xFnH90AXFqtFyDBlGAqZxTWhhD")
+        status = 'Participa en la rifa ' + @raffle.name + '. Para visitarla ingresa a https://rifapp-web.herokuapp.com/raffles/' + @raffle.id
+        access_token = prepare_access_token(ENV["TWITTER_ACCESS_TOKEN"], ENV["TWITTER_ACCESS_TOKEN_SECRET"])
         url = '/1.1/statuses/update.json?status=' + URI::escape(status)
         response = access_token.post(url)
 
@@ -111,7 +111,7 @@ class RafflesController < ApplicationController
     end
 
     def prepare_access_token(oauth_token, oauth_token_secret)
-      consumer = OAuth::Consumer.new("Lj6mlAk1rp31YO5zzE9RjmWR4", "KZo8fmjCzu6SxZyhjIkSDQaLRu9qKss00As2jNknMDtnwWR4oM", { :site => "https://api.twitter.com", :scheme => :header })
+      consumer = OAuth::Consumer.new(ENV["TWITTER_KEY"], ENV["TWITTER_SECRET"], { :site => "https://api.twitter.com", :scheme => :header })
 
       token_hash = { :oauth_token => oauth_token, :oauth_token_secret => oauth_token_secret }
       access_token = OAuth::AccessToken.from_hash(consumer, token_hash )
