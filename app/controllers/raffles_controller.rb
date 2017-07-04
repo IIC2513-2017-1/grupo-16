@@ -65,7 +65,7 @@ class RafflesController < ApplicationController
         access_token = prepare_access_token(ENV["TWITTER_ACCESS_TOKEN"], ENV["TWITTER_ACCESS_TOKEN_SECRET"])
         url = '/1.1/statuses/update.json?status=' + URI::escape(status)
         response = access_token.post(url)
-
+        puts response
         format.html { redirect_to created_user_path(current_user.id), notice: 'Raffle was successfully created.' }
         format.json { render :show, status: :created, location: @raffle }
       else
