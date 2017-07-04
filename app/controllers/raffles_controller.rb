@@ -28,7 +28,9 @@ class RafflesController < ApplicationController
             numbers_bought: Participate.where("raffle_id = ?", @raffle.id).count,
             participate_exists: Participate.where("raffle_id = ? AND user_id= ?", @raffle.id, current_user.id).exists?,
             bookmark_exists: Bookmark.where("raffle_id = ? AND user_id= ?", @raffle.id, current_user.id).exists?,
-            current_user: current_user
+            current_user: current_user,
+            bought: current_user.participates.where("raffle_id = ?", @raffle.id).order("number"),
+            confirmed: current_user.participates.where("raffle_id = ? AND confirmed = true", @raffle.id).order("number")
           }
         else
           render json: {
@@ -38,6 +40,8 @@ class RafflesController < ApplicationController
             participate_exists: Participate.where("raffle_id = ? AND user_id= ?", @raffle.id, current_user.id).exists?,
             bookmark_exists: Bookmark.where("raffle_id = ? AND user_id= ?", @raffle.id, current_user.id).exists?,
             current_user: current_user,
+            bought: current_user.participates.where("raffle_id = ?", @raffle.id).order("number"),
+            confirmed: current_user.participates.where("raffle_id = ? AND confirmed = true", @raffle.id).order("number"),
             winner: User.find(@raffle.winner_id)
           }
         end

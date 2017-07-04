@@ -30,7 +30,7 @@ class CommentsController < ApplicationController
 
     respond_to do |format|
       if @comment.save
-        format.html { redirect_to raffle_comments_path(@raffle), notice: 'Comment was successfully created.' }
+        format.html { redirect_to raffle_comments_path(@raffle), notice: 'Comentario creado.' }
         format.json { render created_user, status: :created, location: raffle_comments_path(@raffle) }
       else
         format.html { render :new }
