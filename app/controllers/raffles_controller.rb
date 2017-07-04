@@ -61,7 +61,7 @@ class RafflesController < ApplicationController
     @raffle.update(user_id: current_user.id)
     respond_to do |format|
       if @raffle.save
-        status = 'Participa en la rifa ' + @raffle.name + '. Para visitarla ingresa a https://rifapp-web.herokuapp.com/raffles/' + @raffle.id
+        status = 'Participa en la rifa ' + @raffle.name + '. Para visitarla ingresa a https://rifapp-web.herokuapp.com/raffles/' + @raffle.id.to_s
         access_token = prepare_access_token(ENV["TWITTER_ACCESS_TOKEN"], ENV["TWITTER_ACCESS_TOKEN_SECRET"])
         url = '/1.1/statuses/update.json?status=' + URI::escape(status)
         response = access_token.post(url)
