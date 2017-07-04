@@ -62,12 +62,12 @@ class RafflesController < ApplicationController
     respond_to do |format|
       if @raffle.save
         status = 'Participa en la rifa ' + @raffle.name + '. Para visitarla ingresa a https://rifapp-web.herokuapp.com/raffles/' + @raffle.id.to_s
-        #access_token = prepare_access_token(ENV["TWITTER_ACCESS_TOKEN"], ENV["TWITTER_ACCESS_TOKEN_SECRET"])
-        #url = '/1.1/statuses/update.json?status=' + URI::escape(status)
-        #response = access_token.post(url)
-        #puts response
-        url = 'graph.facebook.com/100019068038209/feed?message=' + status + '&access_token=' + ENV["FB_ACCESS_TOKEN"]
-        RestClient.post url, {}
+        access_token = prepare_access_token(ENV["TWITTER_ACCESS_TOKEN"], ENV["TWITTER_ACCESS_TOKEN_SECRET"])
+        url = '/1.1/statuses/update.json?status=' + URI::escape(status)
+        response = access_token.post(url)
+        puts response
+        #url = 'graph.facebook.com/v2.9/100019068038209/feed?message=' + URI::escape(status) + '&access_token=' + ENV["FB_ACCESS_TOKEN"]
+        #RestClient.post url, {}
         format.html { redirect_to created_user_path(current_user.id), notice: 'Raffle was successfully created.' }
         format.json { render :show, status: :created, location: @raffle }
       else
